@@ -129,18 +129,31 @@ function initOfficerAuth() {
 function initAdminNavigation() {
     const sidebar = document.getElementById("adminSidebar");
     const toggleBtn = document.getElementById("adminSidebarToggle");
+    const backdrop = document.getElementById("adminSidebarBackdrop");
     const navLinks = document.querySelectorAll(".admin-nav-link[data-view]");
     const pageTitle = document.getElementById("adminCurrentPageTitle");
+
+    function closeSidebar() {
+        if (sidebar) sidebar.classList.remove("open");
+        if (backdrop) backdrop.classList.remove("open");
+        document.body.classList.remove("sidebar-locked");
+    }
 
     if (toggleBtn && sidebar) {
         toggleBtn.addEventListener("click", function(e) {
             e.stopPropagation();
-            sidebar.classList.toggle("open");
+            const isOpen = sidebar.classList.toggle("open");
+            if (backdrop) backdrop.classList.toggle("open", isOpen);
+            document.body.classList.toggle("sidebar-locked", isOpen);
         });
+
+        if (backdrop) {
+            backdrop.addEventListener("click", closeSidebar);
+        }
 
         document.addEventListener("click", function(e) {
             if (sidebar.classList.contains("open") && !sidebar.contains(e.target) && e.target !== toggleBtn) {
-                sidebar.classList.remove("open");
+                closeSidebar();
             }
         });
     }
@@ -158,8 +171,8 @@ function initAdminNavigation() {
                 pageTitle.textContent = this.textContent.trim().replace(/^[^\s]+\s+/, "");
             }
 
-            if (sidebar && window.innerWidth <= 992) {
-                sidebar.classList.remove("open");
+            if (window.innerWidth <= 992) {
+                closeSidebar();
             }
         });
     });

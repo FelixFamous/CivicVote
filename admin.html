@@ -163,6 +163,9 @@
       </div>
     </header>
 
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="admin-sidebar-backdrop" id="adminSidebarBackdrop"></div>
+
     <!-- Administrative Views Container -->
     <main class="admin-content">
 
@@ -313,14 +316,14 @@
           </div>
 
           <!-- Filter Bar -->
-          <div style="padding: 1.25rem 1.5rem; background: #f8fafc; border-bottom: 1px solid var(--admin-border); display: flex; gap: 1rem; flex-wrap: wrap;">
-            <input type="text" id="adminCandidateSearch" class="admin-input" placeholder="Search candidate by name, party, or state..." style="flex: 2; min-width: 240px;">
-            <select id="adminCandidateStatusFilter" class="admin-select" style="flex: 1; min-width: 160px;">
+          <div class="admin-filter-bar">
+            <input type="text" id="adminCandidateSearch" class="admin-input" placeholder="Search candidate by name, party, or state...">
+            <select id="adminCandidateStatusFilter" class="admin-select">
               <option value="all">All Clearance Status</option>
               <option value="verified">Cleared & Gazetted</option>
               <option value="pending">Screening / On Hold</option>
             </select>
-            <select id="adminCandidateOfficeFilter" class="admin-select" style="flex: 1; min-width: 160px;">
+            <select id="adminCandidateOfficeFilter" class="admin-select">
               <option value="all">All Offices</option>
               <option value="President">President</option>
               <option value="Governor">Governor</option>
@@ -465,7 +468,7 @@
               <h3 class="admin-card-title">National Collation & Tabulation Console</h3>
               <p class="admin-card-subtitle">Official declarations under Section 134(2) of the Constitution alongside practice session simulation ledgers.</p>
             </div>
-            <div style="display: flex; gap: 0.5rem;">
+            <div class="admin-card-actions">
               <button class="btn-admin-primary" id="adminCertifyReturnsBtn">
                 <span>📜</span> Certify & Issue Certificate
               </button>
@@ -549,12 +552,12 @@
             </button>
           </div>
 
-          <div style="padding: 1rem 1.5rem; background: #f8fafc; border-bottom: 1px solid var(--admin-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <div style="font-size: 0.84rem; color: #475569;">
+          <div class="admin-incidents-bar">
+            <div class="admin-incidents-bar-text">
               <strong>Active Incidents Monitoring:</strong> Rapid response teams deployed in all 37 electoral operational headquarters.
             </div>
-            <div>
-              <select id="adminIncidentFilter" class="admin-select" style="min-width: 180px; font-size: 0.85rem;">
+            <div class="admin-incidents-bar-select">
+              <select id="adminIncidentFilter" class="admin-select">
                 <option value="all">All Priorities</option>
                 <option value="Critical">Critical Severity</option>
                 <option value="Warning">Warning Incidents</option>
@@ -593,7 +596,7 @@
               <h3 class="admin-card-title">Cryptographic Security & Tamper-Evident Audit Trail</h3>
               <p class="admin-card-subtitle">Every administrative action, clearance toggle, and collation milestone is sealed with SHA-256 tokens.</p>
             </div>
-            <div style="display: flex; gap: 0.5rem;">
+            <div class="admin-card-actions">
               <button class="btn-admin-secondary" id="exportAuditLogsCsvBtn">
                 <span>📥</span> Export Audit Trail (CSV)
               </button>
@@ -626,7 +629,7 @@
            VIEW 7: DISASTER RECOVERY & SYSTEM TOOLS
            ================================================================ -->
       <section id="view-settings" class="admin-view-panel">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem;">
+        <div class="admin-settings-grid">
           
           <!-- Database Integrity Scanner -->
           <div class="admin-card">
@@ -764,7 +767,7 @@
             <textarea id="newCandManifesto" class="admin-textarea" rows="3" placeholder="Key policy priorities and development blueprint..." required></textarea>
           </div>
 
-          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <div class="admin-modal-actions">
             <button type="button" class="btn-admin-secondary" data-modal-close>Cancel</button>
             <button type="submit" class="btn-admin-primary">Accredit & Gazetted Into Registry</button>
           </div>
@@ -837,7 +840,7 @@
             <textarea id="editCandManifesto" class="admin-textarea" rows="3"></textarea>
           </div>
 
-          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <div class="admin-modal-actions">
             <button type="button" class="btn-admin-secondary" data-modal-close>Cancel</button>
             <button type="submit" class="btn-admin-primary">Save Dossier Updates</button>
           </div>
@@ -886,7 +889,7 @@
             <input type="text" id="configCycleOfficer" class="admin-input" value="Prof. Mahmood Yakubu" required>
           </div>
 
-          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <div class="admin-modal-actions">
             <button type="button" class="btn-admin-secondary" data-modal-close>Cancel</button>
             <button type="submit" class="btn-admin-primary">Synchronize Cycle Schedule</button>
           </div>
@@ -957,7 +960,7 @@
             <textarea id="incidentDesc" class="admin-textarea" rows="3" placeholder="Describe the field event observed by presiding officer..." required></textarea>
           </div>
 
-          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <div class="admin-modal-actions">
             <button type="button" class="btn-admin-secondary" data-modal-close>Cancel</button>
             <button type="submit" class="btn-admin-primary">Dispatch to Incident Desk</button>
           </div>
@@ -1025,7 +1028,7 @@
         </div>
       </div>
 
-      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+      <div class="admin-modal-actions">
         <button type="button" class="btn-admin-secondary" data-modal-close>Close</button>
         <button type="button" class="btn-admin-primary" id="printCertificateBtn">
           <span>🖨️</span> Print Official Certificate
