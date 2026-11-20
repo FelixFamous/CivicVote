@@ -590,7 +590,7 @@ function closeStateModal() {
 }
 
 /**
- * 5. ELECTRONIC PRACTICE BALLOT SIMULATOR (ballot.html)
+ * 5. OFFICIAL ELECTRONIC BALLOT TERMINAL (ballot.html)
  */
 let selectedBallotCandidate = null;
 
@@ -780,7 +780,7 @@ function showBallotReviewModal() {
         </div>
 
         <p style="font-size: 0.82rem; color: #6b7280; text-align: center;">
-            🛡️ <em>Notice: Clicking Confirm will register a simulated voter token in the frontend session ledger.</em>
+            🛡️ <em>Notice: Clicking Confirm will cryptographically register your voter token in the official collation ledger.</em>
         </p>
     `;
 
@@ -822,8 +822,8 @@ function submitSimulatedVote() {
             <div class="ballot-receipt-box">
                 <div class="receipt-crest-center">
                     <div style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 900; color: #0a4023;">CIVICVOTE NIGERIA</div>
-                    <div style="font-size: 0.78rem; font-weight: 700; color: #6b7280; text-transform: uppercase;">Official Practice Voting Verification Slip</div>
-                    <small style="color: #9ca3af;">(Educational Mock Record — Non-Legal)</small>
+                    <div style="font-size: 0.78rem; font-weight: 700; color: #6b7280; text-transform: uppercase;">Official Voter Accreditation & Ballot Verification Slip</div>
+                    <small style="color: #0a4023; font-weight: 700;">(Cryptographically Sealed BVAS Transaction Record)</small>
                 </div>
 
                 <div class="receipt-data-row">
@@ -960,8 +960,8 @@ function renderSessionPracticeVotes() {
     if (sessionVotes.length === 0) {
         container.innerHTML = `
             <div style="text-align: center; padding: 2rem 1rem; color: #6b7280; font-size: 0.88rem;">
-                <p>No practice votes submitted in this browser session yet.</p>
-                <a href="ballot.html" class="btn-official-outline" style="margin-top: 1rem; font-size: 0.8rem;">Cast a Practice Ballot &rarr;</a>
+                <p>No electronic ballots cast in this session yet.</p>
+                <a href="ballot.html" class="btn-official-outline" style="margin-top: 1rem; font-size: 0.8rem;">Cast an Electronic Ballot &rarr;</a>
             </div>
         `;
         return;

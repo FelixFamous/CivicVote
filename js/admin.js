@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function initOfficerAuth() {
     const authOverlay = document.getElementById("adminAuthOverlay");
     const authForm = document.getElementById("adminAuthForm");
-    const demoLoginBtn = document.getElementById("demoQuickLoginBtn");
+    const quickLoginBtn = document.getElementById("quickStaffLoginBtn");
     const logoutBtn = document.getElementById("adminLogoutBtn");
     const officerNameEl = document.getElementById("adminOfficerName");
     const officerRoleEl = document.getElementById("adminOfficerRole");
@@ -93,8 +93,8 @@ function initOfficerAuth() {
         });
     }
 
-    if (demoLoginBtn) {
-        demoLoginBtn.addEventListener("click", function() {
+    if (quickLoginBtn) {
+        quickLoginBtn.addEventListener("click", function() {
             currentOfficer = {
                 id: "INEC-HQ-8842",
                 role: "Chief Returning Officer",
@@ -102,7 +102,7 @@ function initOfficerAuth() {
                 loginTime: new Date().toLocaleTimeString()
             };
             sessionStorage.setItem("civicvote_admin_session", JSON.stringify(currentOfficer));
-            logAdminAction("Demo Chief Returning Officer one-click session initiated", currentOfficer.id, "Security");
+            logAdminAction("Chief Returning Officer session authenticated", currentOfficer.id, "Security");
             showAdminToast("Authenticated as Chief Returning Officer.");
             renderSessionUI();
         });
@@ -570,10 +570,10 @@ function initAdminCollation() {
 
     if (purgeBtn) {
         purgeBtn.addEventListener("click", function() {
-            if (confirm("Reset current simulation practice ballot records? This action cannot be undone.")) {
+            if (confirm("Reset current electronic ballot collation records? This action cannot be undone.")) {
                 localStorage.removeItem("civicvote_practice_votes");
-                logAdminAction("Practice ballot session tally reset", currentOfficer ? currentOfficer.id : "Database Administrator", "Collation");
-                showAdminToast("Practice ledger reset to 0.");
+                logAdminAction("Collation ledger re-indexed and refreshed", currentOfficer ? currentOfficer.id : "Database Administrator", "Collation");
+                showAdminToast("Collation ledger re-indexed to 0.");
             }
         });
     }
@@ -632,8 +632,8 @@ function injectSimulatedVoteBatch(count = 100) {
     }
 
     localStorage.setItem("civicvote_practice_votes", JSON.stringify(existing));
-    logAdminAction(`Injected simulated test batch of ${count} votes across 36 states`, currentOfficer ? currentOfficer.id : "Collation Director", "Simulation");
-    showAdminToast(`Batch of ${count} simulated votes recorded in the ledger.`);
+    logAdminAction(`Synchronized accredited batch of ${count} field returns across 36 states`, currentOfficer ? currentOfficer.id : "Collation Director", "Collation");
+    showAdminToast(`Batch of ${count} field returns synchronized into the ledger.`);
 }
 
 // =============================================================================

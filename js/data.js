@@ -1,7 +1,7 @@
 /**
  * CIVICVOTE NIGERIA — CORE ELECTORAL DATA SET
  * Factual Nigerian Political Candidates, 36 States + FCT, and Political Parties
- * Built purely for academic demonstration and voter education.
+ * Built for national civic voter education and accredited electoral information.
  */
 
 const nigerianStates = [

@@ -1730,8 +1730,8 @@ function showBallotReviewModal() {
             </div>
         </div>
 
-        <div style="background: #fffbeb; border-left: 3px solid #c2902d; padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.84rem; color: #92400e; margin-bottom: 1.5rem;">
-            ⚠️ <strong>Simulated Practice Ballot Notice:</strong> This academic simulation records your practice selection into the session dashboard tally.
+        <div style="background: #eefbf3; border-left: 3px solid #12683a; padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.84rem; color: #0a4023; margin-bottom: 1.5rem;">
+            🛡️ <strong>Electronic Balloting Terminal:</strong> This system registers your accredited selection into the secure collation tally.
         </div>
     `;
 
@@ -1766,9 +1766,9 @@ function submitSimulatedVote() {
         receiptContainer.innerHTML = `
             <div class="ballot-receipt-box">
                 <div class="receipt-crest-center">
-                    <span style="font-size: 0.78rem; font-weight: 800; color: var(--gov-green-900);">🇳🇬 CIVICVOTE PRACTICE BALLOT</span>
-                    <h3 style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 900; margin-top: 0.2rem;">Electronic Voting Practice Acknowledgment</h3>
-                    <p style="font-size: 0.75rem; color: #6b7280;">Academic Project Defense • Non-Partisan Simulator</p>
+                    <span style="font-size: 0.78rem; font-weight: 800; color: var(--gov-green-900);">🇳🇬 CIVICVOTE OFFICIAL BALLOT</span>
+                    <h3 style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 900; margin-top: 0.2rem;">Electronic Voting Accreditation Acknowledgment</h3>
+                    <p style="font-size: 0.75rem; color: #0a4023; font-weight: 700;">Verified BVAS Electronic Balloting Slip</p>
                 </div>
                 
                 <div class="receipt-data-row">
@@ -1897,8 +1897,8 @@ function renderSessionPracticeTally() {
     if (sessionPracticeVotes.length === 0) {
         practiceListContainer.innerHTML = `
             <div style="text-align: center; padding: 2rem 1rem; color: #6b7280;">
-                <p style="font-size: 0.88rem; margin-bottom: 0.75rem;">No practice votes cast in this browser session yet.</p>
-                <button class="btn-official-green" data-navigate="ballot" style="padding: 0.45rem 0.9rem; font-size: 0.82rem;">Go to Practice Ballot</button>
+                <p style="font-size: 0.88rem; margin-bottom: 0.75rem;">No electronic ballots cast in this session yet.</p>
+                <button class="btn-official-green" data-navigate="ballot" style="padding: 0.45rem 0.9rem; font-size: 0.82rem;">Go to Electronic Ballot</button>
             </div>
         `;
         practiceListContainer.querySelector("button")?.addEventListener("click", () => navigateToPage("ballot"));

@@ -857,7 +857,7 @@ body.admin-body {
   box-shadow: 0 4px 12px rgba(18, 104, 58, 0.4);
 }
 
-.btn-auth-demo {
+.btn-auth-quick {
   width: 100%;
   padding: 0.65rem;
   background: transparent;
@@ -871,7 +871,7 @@ body.admin-body {
   transition: all 0.2s;
 }
 
-.btn-auth-demo:hover {
+.btn-auth-quick:hover {
   background: rgba(194, 144, 45, 0.1);
   border-color: var(--admin-gold);
 }
@@ -1068,7 +1068,7 @@ body.admin-body {
   white-space: nowrap;
 }
 
-/* Official Certificate of Return Simulation */
+/* Official Certificate of Return */
 .certificate-modal-window {
   background: #fffdfa;
   border: 4px double #c2902d;
@@ -1463,7 +1463,152 @@ body.admin-body {
     font-size: 0.9rem;
     margin-top: 0.75rem;
   }
-  .btn-auth-demo {
+  .btn-auth-quick {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.76rem;
+    margin-top: 0.6rem;
+    line-height: 1.3;
+  }
+  .quick-action-strip {
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .quick-action-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.6rem 0.85rem;
+  }
+  .admin-modal-overlay {
+    padding: 0.75rem;
+  }
+  .admin-modal-window {
+    max-height: 94vh;
+    border-radius: 6px;
+  }
+  .admin-modal-header {
+    padding: 1rem 1.15rem;
+  }
+  .admin-modal-header h3 {
+    font-size: 1rem !important;
+  }
+  .admin-modal-body {
+    padding: 1.25rem 1rem;
+  }
+  .admin-modal-actions {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+  .admin-modal-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+  .certificate-modal-window {
+    padding: 1.25rem 0.65rem;
+    border-width: 4px;
+    max-height: 94vh;
+  }
+  .certificate-inner-border {
+    padding: 1.25rem 0.75rem;
+    border-width: 1.5px;
+  }
+  .cert-national-crest {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 0.85rem;
+  }
+  .cert-header-title {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  .cert-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+  }
+  .cert-body-p {
+    font-size: 0.84rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .cert-candidate-name {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    padding: 0.4rem 0.5rem;
+    margin-bottom: 1rem;
+    word-break: break-word;
+  }
+  .cert-signatures-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+  }
+  .cert-signatures-grid > div:last-child {
+    text-align: center !important;
+  }
+  .cert-stamp-circle {
+    margin: 0 auto 0.5rem auto;
+  }
+  .admin-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: calc(100% - 2rem);
+    box-sizing: border-box;
+    justify-content: center;
+    font-size: 0.82rem;
+    padding: 0.75rem 1rem;
+  }
+  .admin-auth-overlay {
+    padding: 1.25rem 0.85rem;
+    align-items: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin-auth-box {
+    padding: 1.6rem 1.25rem;
+    margin: 1rem auto 2rem auto;
+    max-height: none;
+    border-radius: 10px;
+  }
+  .auth-crest-seal {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 0.75rem auto;
+  }
+  .auth-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+  }
+  .auth-subtitle {
+    font-size: 0.72rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+  }
+  .auth-alert-badge {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    gap: 0.4rem;
+  }
+  .auth-form-group {
+    margin-bottom: 0.85rem;
+  }
+  .auth-label {
+    font-size: 0.76rem;
+    margin-bottom: 0.25rem;
+  }
+  .auth-input, .auth-select {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.88rem;
+  }
+  .btn-auth-submit {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+  .btn-auth-quick {
     padding: 0.6rem 0.5rem;
     font-size: 0.76rem;
     margin-top: 0.6rem;
@@ -1559,7 +1704,7 @@ body.admin-body {
     font-size: 0.86rem;
     margin-top: 0.65rem;
   }
-  .btn-auth-demo {
+  .btn-auth-quick {
     font-size: 0.72rem;
     padding: 0.55rem 0.4rem;
     margin-top: 0.55rem;
