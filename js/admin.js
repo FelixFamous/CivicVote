@@ -378,3 +378,4 @@ function updateDashboardMetrics() {
         ballotMetric.textContent = practiceVotes.length + 142; // base simulated baseline + session
     }
 }
+

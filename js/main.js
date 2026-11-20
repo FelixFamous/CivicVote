@@ -245,7 +245,7 @@ function renderHomeCandidatesPreview() {
 
     // Pick top prominent candidates across parties (Presidential & Key Governors)
     const featuredList = candidatesData.filter(c => 
-        c.position === "President" || c.id === "gov-lag-sanwo" || c.id === "gov-kano-abba" || c.id === "gov-abi-otti"
+        c.position === "President" || c.id === "gov-lag-sanwoolu" || c.id === "gov-kano-abba" || c.id === "gov-abi-otti"
     ).slice(0, 6);
 
     container.innerHTML = "";
@@ -259,22 +259,31 @@ function renderHomeCandidatesPreview() {
         const card = document.createElement("div");
         card.className = "candidate-card";
         card.innerHTML = `
-            <div class="candidate-photo-wrapper">
-                <img src="${cand.photo}" alt="${cand.name}" class="candidate-photo"
+            <div class="card-candidate-photo-wrap">
+                <img src="${cand.photo}" alt="${cand.name}" class="card-candidate-img"
                      onerror="if (!this.dataset.fb && '${cand.wikiFile || ''}') { this.dataset.fb='1'; this.src='https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(cand.wikiFile)}'; } else { this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(cand.name)}&background=0a4023&color=fff&size=256'; }">
-                <div class="candidate-party-badge" style="background-color: ${partyInfo.color};">
-                    ${cand.party}
+                <div class="card-party-overlay-pill" style="border-left: 3px solid ${partyInfo.color};">
+                    <span style="color: ${partyInfo.color}; font-weight: 800;">${cand.party}</span>
                 </div>
             </div>
             
-            <div class="candidate-card-body">
-                <div class="candidate-position-title">${cand.position}</div>
-                <h3 class="candidate-name-h3">${cand.name}</h3>
-                <div class="candidate-location-meta">
-                    <span>📍 ${cand.constituency}</span>
+            <div class="card-body-content">
+                <span class="card-candidate-role">${cand.position}</span>
+                <h3 class="card-candidate-name">${cand.name}</h3>
+                <p class="card-party-subname">${partyInfo.name}</p>
+                
+                <div class="card-meta-row">
+                    <span>📍</span>
+                    <span>${cand.constituency}</span>
                 </div>
 
-                <div class="candidate-card-footer">
+                ${cand.runningMate && cand.runningMate !== "N/A (Legislative Seat)" ? `
+                    <div class="card-running-mate-box">
+                        <span style="color: #6b7280;">Running Mate:</span> <strong>${cand.runningMate}</strong>
+                    </div>
+                ` : ""}
+
+                <div class="card-footer-action">
                     <span class="status-badge-dot">● Official Candidate</span>
                     <button class="btn-official-green view-profile-btn" style="padding: 0.4rem 0.85rem; font-size: 0.82rem;" data-candidate-id="${cand.id}">
                         View Profile

@@ -1015,3 +1015,4 @@ const certifiedResults2023 = {
         { state: "Federal Capital Territory", leadingParty: "LP", votes: 281717, winner: "Peter Obi" }
     ]
 };
+

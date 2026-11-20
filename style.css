@@ -412,8 +412,9 @@ a {
 /* --- 5. REAL CANDIDATE PHOTO CARDS --- */
 .candidates-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
+  align-items: stretch;
 }
 
 .candidate-card {
@@ -425,6 +426,8 @@ a {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  position: relative;
 }
 
 .candidate-card:hover {
@@ -432,27 +435,41 @@ a {
   box-shadow: var(--shadow-elevated);
 }
 
-.card-candidate-photo-wrap {
+.card-candidate-photo-wrap,
+.candidate-photo-wrapper {
   width: 100%;
-  height: 220px;
+  height: 250px;
+  min-height: 250px;
+  max-height: 250px;
   background-color: #f3f4f6;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card-candidate-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+.card-candidate-img,
+.candidate-photo,
+.candidate-card img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 250px !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+  display: block !important;
   transition: transform 0.3s ease;
 }
 
-.candidate-card:hover .card-candidate-img {
+.candidate-card:hover .card-candidate-img,
+.candidate-card:hover .candidate-photo,
+.candidate-card:hover img {
   transform: scale(1.03);
 }
 
-.card-party-overlay-pill {
+.card-party-overlay-pill,
+.candidate-party-badge {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -465,31 +482,35 @@ a {
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  z-index: 2;
 }
 
-.card-body-content {
-  padding: 1.35rem;
+.card-body-content,
+.candidate-card-body {
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.card-candidate-role {
+.card-candidate-role,
+.candidate-position-title {
   font-size: 0.74rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--gov-green-700);
   letter-spacing: 0.5px;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
-.card-candidate-name {
+.card-candidate-name,
+.candidate-name-h3 {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: #111827;
-  line-height: 1.25;
-  margin-bottom: 0.25rem;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
 }
 
 .card-party-subname {
@@ -498,7 +519,8 @@ a {
   margin-bottom: 0.75rem;
 }
 
-.card-meta-row {
+.card-meta-row,
+.candidate-location-meta {
   font-size: 0.84rem;
   color: var(--gov-slate);
   display: flex;
@@ -516,7 +538,8 @@ a {
   margin-bottom: 1.15rem;
 }
 
-.card-footer-action {
+.card-footer-action,
+.candidate-card-footer {
   margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid var(--gov-border-light);
