@@ -1,0 +1,1441 @@
+/* ==========================================================================
+   CIVICVOTE NIGERIA — OFFICIAL NATIONAL CIVIC TECH DESIGN SYSTEM
+   Inspired by Nigeria's Official Election Portals (cvr.inecnigeria.org)
+   Clean, Authoritative, High-Accessibility, Modern Institutional UI
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&display=swap');
+
+:root {
+  /* Institutional Nigerian Palette */
+  --gov-green-900: #0a4023;
+  --gov-green-800: #0e542f;
+  --gov-green-700: #12683a;
+  --gov-green-600: #178047;
+  --gov-green-500: #1e9d58;
+  --gov-green-50:  #eefbf3;
+
+  /* Red Top Alert Bar (Directly seen on cvr.inecnigeria.org) */
+  --alert-red: #d32f2f;
+  --alert-red-dark: #b71c1c;
+
+  /* Muted Warm Accent */
+  --gold-accent: #c2902d;
+  --gold-light: #fef8eb;
+
+  /* Neutrals */
+  --gov-dark: #1f2937;
+  --gov-slate: #374151;
+  --gov-muted: #6b7280;
+  --gov-border: #e5e7eb;
+  --gov-border-light: #f3f4f6;
+  --gov-bg-gray: #f8fafc;
+  --gov-white: #ffffff;
+
+  /* Typography */
+  --font-base: 'Public Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: 'Cabinet Grotesk', var(--font-base);
+
+  /* Shadows */
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--gov-bg-gray);
+  color: var(--gov-dark);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* SPA Page Transitions & Visibility */
+.page-section {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.page-section.active {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* --- 1. OFFICIAL RED ANNOUNCEMENT STRIP (Exact Match to cvr.inecnigeria.org) --- */
+.top-official-notice-bar {
+  background-color: var(--alert-red);
+  color: var(--gov-white);
+  padding: 0.55rem 1rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1010;
+}
+
+.top-official-notice-bar a {
+  color: #ffeb3b;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.notice-close-btn {
+  background: none;
+  border: none;
+  color: var(--gov-white);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  opacity: 0.8;
+}
+.notice-close-btn:hover { opacity: 1; }
+
+/* --- 2. OFFICIAL TOP HEADER --- */
+.main-header {
+  background: var(--gov-white);
+  border-bottom: 1px solid var(--gov-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-subtle);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 78px;
+}
+
+.brand-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.official-crest-seal {
+  width: 46px;
+  height: 46px;
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-main-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--gov-green-900);
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.brand-main-title span {
+  color: var(--gov-green-600);
+}
+
+.brand-sub-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gov-muted);
+  letter-spacing: 0.2px;
+}
+
+/* Nav Menu Items */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--gov-slate);
+  padding: 0.45rem 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--gov-green-700);
+}
+
+.nav-link.active {
+  color: var(--gov-green-700);
+  border-bottom-color: var(--gov-green-700);
+}
+
+.nav-pill-btn {
+  background-color: var(--gov-green-700);
+  color: var(--gov-white) !important;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.55rem 1.25rem;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background 0.2s;
+  border: none;
+}
+
+.nav-pill-btn:hover {
+  background-color: var(--gov-green-800);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: 1px solid var(--gov-border);
+  font-size: 1.3rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+/* --- 3. HERO BANNER WITH NIGERIAN VOTER CITIZENS --- */
+.official-hero-wrap {
+  background-color: var(--gov-white);
+  border-bottom: 1px solid var(--gov-border);
+  padding: 3.5rem 0 3rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Geometric Subtle Wave Overlay on Left (as in cvr.inecnigeria.org) */
+.official-hero-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: radial-gradient(circle at 10% 20%, rgba(18, 104, 58, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-layout-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-welcome-h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+.hero-body-para {
+  font-size: 1.08rem;
+  color: #4b5563;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  max-width: 580px;
+}
+
+.hero-action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.btn-official-green {
+  background: var(--gov-green-700);
+  color: var(--gov-white);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.75rem 1.65rem;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--gov-green-800);
+  transition: all 0.2s;
+}
+
+.btn-official-green:hover {
+  background: var(--gov-green-800);
+  box-shadow: var(--shadow-card);
+}
+
+.btn-official-outline {
+  background: var(--gov-white);
+  color: var(--gov-green-800);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--gov-border);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-official-outline:hover {
+  background: var(--gov-bg-gray);
+  border-color: var(--gov-green-700);
+}
+
+.hero-voter-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-voter-img {
+  width: 100%;
+  max-width: 480px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevated);
+  border: 4px solid var(--gov-white);
+}
+
+/* Quick Metrics Bar directly below hero */
+.metrics-strip {
+  background: var(--gov-green-50);
+  border-top: 1px solid #d1fae5;
+  border-bottom: 1px solid #d1fae5;
+  padding: 1.25rem 0;
+}
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.metric-box h3 {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: var(--gov-green-900);
+  line-height: 1.1;
+}
+
+.metric-box p {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gov-green-700);
+  letter-spacing: 0.5px;
+  margin-top: 0.2rem;
+}
+
+/* --- 4. SECTION STYLING --- */
+.section-wrapper {
+  padding: 3.5rem 0;
+}
+
+.section-head-block {
+  margin-bottom: 2.25rem;
+}
+
+.section-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--gov-green-700);
+  letter-spacing: 0.8px;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.section-heading-h2 {
+  font-family: var(--font-heading);
+  font-size: 2.15rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.4px;
+}
+
+.section-subtext {
+  font-size: 0.98rem;
+  color: var(--gov-muted);
+  max-width: 720px;
+  margin-top: 0.35rem;
+}
+
+/* --- 5. REAL CANDIDATE PHOTO CARDS --- */
+.candidates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.candidate-card {
+  background: var(--gov-white);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.candidate-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+}
+
+.card-candidate-photo-wrap {
+  width: 100%;
+  height: 220px;
+  background-color: #f3f4f6;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-candidate-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.candidate-card:hover .card-candidate-img {
+  transform: scale(1.03);
+}
+
+.card-party-overlay-pill {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--gov-white);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.card-body-content {
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-candidate-role {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--gov-green-700);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.card-candidate-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
+}
+
+.card-party-subname {
+  font-size: 0.82rem;
+  color: var(--gov-muted);
+  margin-bottom: 0.75rem;
+}
+
+.card-meta-row {
+  font-size: 0.84rem;
+  color: var(--gov-slate);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-running-mate-box {
+  background: var(--gov-bg-gray);
+  border: 1px solid var(--gov-border);
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  margin-bottom: 1.15rem;
+}
+
+.card-footer-action {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gov-border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge-dot {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gov-green-700);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Filter controls matching cvr.inecnigeria.org portal form style */
+.portal-form-panel {
+  background: var(--gov-white);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-subtle);
+}
+
+.portal-form-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr auto;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.portal-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.portal-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gov-slate);
+}
+
+.portal-label .req {
+  color: var(--alert-red);
+}
+
+.portal-input, .portal-select {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.92rem;
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
+  background: var(--gov-white);
+  color: var(--gov-dark);
+}
+
+.portal-input:focus, .portal-select:focus {
+  outline: none;
+  border-color: var(--gov-green-700);
+  box-shadow: 0 0 0 3px rgba(18, 104, 58, 0.15);
+}
+
+/* --- 6. STATES & FCT DIRECTORY --- */
+.states-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.35rem;
+}
+
+.state-card {
+  background: var(--gov-white);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  padding: 1.35rem;
+  box-shadow: var(--shadow-subtle);
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.state-card:hover {
+  border-color: var(--gov-green-700);
+  box-shadow: var(--shadow-card);
+}
+
+.state-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.state-code-pill {
+  background: var(--gov-green-900);
+  color: var(--gov-white);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.state-zone-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gov-muted);
+}
+
+.state-title-h3 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.state-cap-text {
+  font-size: 0.82rem;
+  color: var(--gov-muted);
+  margin-bottom: 1rem;
+}
+
+.state-stat-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.4rem;
+  background: var(--gov-bg-gray);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.4rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.state-stat-val {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gov-green-900);
+  display: block;
+}
+
+.state-stat-sub {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--gov-muted);
+  text-transform: uppercase;
+}
+
+.gov-cycle-status-pill {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.status-regular { background: #eefbf3; color: #0a4023; border: 1px solid #cbf3db; }
+.status-offcycle { background: #fef8eb; color: #8a6114; border: 1px solid #f9e2b1; }
+.status-fct { background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; }
+
+/* --- 7. BALLOT SIMULATOR WITH CANDIDATE PHOTOS --- */
+.ballot-terminal-panel {
+  background: var(--gov-white);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevated);
+  max-width: 920px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.ballot-terminal-header {
+  background: var(--gov-green-900);
+  color: var(--gov-white);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ballot-terminal-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.ballot-terminal-header p {
+  font-size: 0.82rem;
+  color: #a7f3d0;
+}
+
+.ballot-step-box {
+  padding: 2rem;
+  border-bottom: 1px solid var(--gov-border);
+}
+
+.ballot-step-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.step-num-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gov-green-700);
+  color: var(--gov-white);
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-title-text {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.ballot-candidate-item {
+  display: grid;
+  grid-template-columns: 36px 64px 74px 1fr 50px;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  background: var(--gov-white);
+  cursor: pointer;
+  margin-bottom: 0.85rem;
+  transition: all 0.2s;
+}
+
+.ballot-candidate-item:hover {
+  border-color: var(--gov-green-600);
+  background: var(--gov-bg-gray);
+}
+
+.ballot-candidate-item.selected {
+  border-color: var(--gov-green-700);
+  background: var(--gov-green-50);
+  box-shadow: 0 0 0 1px var(--gov-green-700);
+}
+
+.ballot-thumb-photo {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--gov-border);
+}
+
+.ballot-party-box {
+  padding: 0.35rem 0.55rem;
+  color: var(--gov-white);
+  font-weight: 800;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.ballot-cand-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.ballot-cand-party-sub {
+  font-size: 0.8rem;
+  color: var(--gov-muted);
+}
+
+.ballot-cand-running {
+  font-size: 0.76rem;
+  color: var(--gov-slate);
+}
+
+.ballot-action-footer {
+  padding: 1.5rem 2rem;
+  background: var(--gov-bg-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Printable Ballot Receipt Slip */
+.ballot-receipt-box {
+  background: var(--gov-white);
+  border: 2px dashed #9ca3af;
+  border-radius: var(--radius-md);
+  max-width: 540px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: left;
+}
+
+.receipt-crest-center {
+  text-align: center;
+  border-bottom: 1px solid var(--gov-border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.receipt-data-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.45rem 0;
+  border-bottom: 1px dotted var(--gov-border);
+  font-size: 0.88rem;
+}
+
+/* --- 8. RESULTS DASHBOARD --- */
+.results-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.35rem;
+  margin-bottom: 2.5rem;
+}
+
+.result-card-box {
+  background: var(--gov-white);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-subtle);
+  border-top: 4px solid var(--gov-green-700);
+}
+
+.res-pct-val {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #111827;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  min-width: 540px;
+}
+
+.res-bar-track {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0.65rem 0;
+}
+
+.res-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* --- 9. MODALS --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1.5rem;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-window {
+  background: var(--gov-white);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-elevated);
+  position: relative;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: var(--gov-white);
+  border: 1px solid var(--gov-border);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: var(--gov-bg-gray);
+}
+
+.modal-header-bar {
+  background: var(--gov-green-900);
+  color: var(--gov-white);
+  padding: 1.5rem 2rem;
+  position: relative;
+}
+
+.modal-content-body {
+  padding: 2rem;
+}
+
+.modal-profile-header-strip {
+  padding: 2.5rem 2rem 1.5rem 2rem;
+  background: var(--gov-bg-gray);
+  border-bottom: 1px solid var(--gov-border);
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.modal-profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 3px solid var(--gov-white);
+  box-shadow: var(--shadow-card);
+}
+
+/* --- 10. FOOTER (Exact Match to cvr.inecnigeria.org Footer Layout) --- */
+.main-footer {
+  background: var(--gov-white);
+  border-top: 1px solid var(--gov-border);
+  padding: 4rem 0 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-brand-summary p {
+  font-size: 0.9rem;
+  color: var(--gov-slate);
+  margin-top: 0.85rem;
+  line-height: 1.6;
+}
+
+.footer-col-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 1.15rem;
+}
+
+.footer-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-links-list a {
+  font-size: 0.88rem;
+  color: var(--gov-slate);
+  transition: color 0.2s;
+}
+
+.footer-links-list a:hover {
+  color: var(--gov-green-700);
+}
+
+.footer-independence-disclaimer {
+  background: var(--gov-bg-gray);
+  border: 1px solid var(--gov-border);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: var(--gov-muted);
+  line-height: 1.55;
+  margin-bottom: 2rem;
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid var(--gov-border);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--gov-muted);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* --- 11. RESPONSIVE COMPONENT CLASSES & LAYOUT SYSTEM --- */
+.categories-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.category-summary-card {
+  background: var(--gov-white);
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.ballot-step1-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.results-two-col-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.75rem;
+}
+
+.pillars-three-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.contact-inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.state-modal-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   ADVANCED MULTI-BREAKPOINT RESPONSIVE RULES
+   Guaranteed absolute responsiveness across all viewports (320px to 4K)
+   ========================================================================== */
+
+/* 1. Large Tablets & Small Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .hero-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+  .hero-voter-img {
+    max-width: 100%;
+    height: 340px;
+  }
+  .portal-form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .portal-form-grid .portal-form-group:last-child {
+    grid-column: 1 / -1;
+  }
+  .portal-form-grid button {
+    width: 100%;
+    justify-content: center;
+  }
+  .results-two-col-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .footer-top-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* 2. Tablets & Mobile Landscape (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Header & Navigation Overlay */
+  .navbar {
+    height: 70px;
+  }
+  .official-crest-seal {
+    width: 38px;
+    height: 38px;
+  }
+  .brand-main-title {
+    font-size: 1.15rem;
+  }
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    font-size: 1.35rem;
+    color: var(--gov-slate);
+    border: 1.5px solid var(--gov-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    background: var(--gov-white);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.25rem 1.5rem 2rem 1.5rem;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-bottom: 2px solid var(--gov-green-700);
+    display: none;
+    gap: 0.65rem;
+    z-index: 1050;
+  }
+  .nav-menu.active {
+    display: flex;
+  }
+  .nav-menu .nav-link {
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--gov-border-light);
+    width: 100%;
+  }
+  .nav-menu .nav-pill-btn {
+    margin-top: 0.75rem;
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem;
+  }
+
+  /* Hero Section */
+  .official-hero-wrap {
+    padding: 2.25rem 0 2rem 0;
+  }
+  .hero-welcome-h1 {
+    font-size: 2.2rem;
+  }
+  .hero-body-para {
+    font-size: 0.98rem;
+  }
+  .hero-voter-img {
+    height: 280px;
+  }
+
+  /* Metrics */
+  .metrics-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .metric-box h3 {
+    font-size: 1.6rem;
+  }
+
+  /* Ballot Interface */
+  .ballot-terminal-header {
+    padding: 1.25rem 1.5rem;
+  }
+  .ballot-step-box {
+    padding: 1.5rem;
+  }
+  .ballot-candidate-item {
+    grid-template-columns: 32px 52px 64px 1fr;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+  .ballot-candidate-item .ballot-thumb-photo {
+    width: 52px;
+    height: 52px;
+    display: block !important;
+  }
+  .ballot-candidate-item > div:last-child {
+    display: none; /* Hide the decorative 🗳️ emoji on smaller screens to make room */
+  }
+  .ballot-step1-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Modals */
+  .modal-overlay {
+    padding: 1rem;
+  }
+  .modal-window {
+    max-height: 92vh;
+  }
+  .modal-profile-header-strip {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1.25rem 1.25rem 1.25rem;
+    gap: 1rem;
+  }
+  .modal-profile-header-strip div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .modal-profile-img {
+    width: 88px;
+    height: 88px;
+  }
+  .state-modal-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Contact Inputs */
+  .contact-inputs-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* 3. Mobile Devices Standard (max-width: 576px) */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Top Notice Bar */
+  .top-official-notice-bar {
+    font-size: 0.76rem;
+    padding: 0.45rem 0.75rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Typography */
+  .hero-welcome-h1 {
+    font-size: 1.85rem;
+  }
+  .section-heading-h2 {
+    font-size: 1.6rem;
+  }
+
+  /* Hero Actions: full width touch buttons */
+  .hero-action-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+  }
+  .hero-action-buttons a, 
+  .hero-action-buttons button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.8rem 1.25rem;
+  }
+  .hero-voter-img {
+    height: 220px;
+  }
+
+  /* Single column grids on small screens */
+  .candidates-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .states-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .categories-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .pillars-three-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .portal-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .results-summary-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Ballot Terminal Mobile Adjustments */
+  .ballot-terminal-panel {
+    border-radius: var(--radius-sm);
+  }
+  .ballot-terminal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1.25rem 1rem;
+  }
+  .ballot-step-box {
+    padding: 1.25rem 1rem;
+  }
+  .ballot-candidate-item {
+    grid-template-columns: 28px 46px 1fr;
+    gap: 0.65rem;
+    padding: 0.65rem 0.75rem;
+  }
+  .ballot-candidate-item .ballot-thumb-photo {
+    width: 46px;
+    height: 46px;
+  }
+  .ballot-party-box {
+    display: inline-block;
+    padding: 0.15rem 0.45rem;
+    font-size: 0.72rem;
+    margin-bottom: 0.2rem;
+  }
+  .ballot-cand-title {
+    font-size: 1rem;
+  }
+  .ballot-action-footer {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+    padding: 1.25rem 1rem;
+  }
+  .ballot-action-footer button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Modals */
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  .modal-window {
+    max-height: 95vh;
+    border-radius: var(--radius-sm);
+  }
+  .modal-meta-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Footer */
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .main-footer {
+    padding: 2.5rem 0 1.5rem 0;
+    margin-top: 2.5rem;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+}
+
+/* 4. Extra Small Phones (max-width: 400px - iPhone SE, Galaxy Fold outer, etc.) */
+@media (max-width: 400px) {
+  .brand-sub-label {
+    display: none; /* Hide tiny subtitle on ultra-narrow screens to keep branding pristine */
+  }
+  .brand-main-title {
+    font-size: 1.05rem;
+  }
+  .metrics-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .state-stat-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .state-modal-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .card-footer-action {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+  .card-footer-action button {
+    width: 100%;
+    justify-content: center;
+  }
+}

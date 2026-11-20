@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>States & FCT Directory — CivicVote Nigeria</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Alert Bar -->
+  <div class="top-official-notice-bar">
+    <div class="container" style="display: flex; justify-content: center; align-items: center; position: relative;">
+      <span><strong>ELECTORAL GEOGRAPHY:</strong> Comprehensive directory of all 36 States and the Federal Capital Territory (FCT).</span>
+      <button class="notice-close-btn" aria-label="Dismiss notice">✕</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="brand-identity">
+          <svg class="official-crest-seal" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" fill="#0A4023" stroke="#C2902D" stroke-width="3"/>
+            <path d="M50 16L74 27V52C74 67.5 63.5 80.5 50 84C36.5 80.5 26 67.5 26 52V27L50 16Z" fill="#0E542F" stroke="#FFFFFF" stroke-width="2"/>
+            <path d="M50 30V66M35 48H65" stroke="#C2902D" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="brand-text-block">
+            <span class="brand-main-title">CIVICVOTE <span>NIGERIA</span></span>
+            <span class="brand-sub-label">National Civic Technology & Electoral Portal</span>
+          </div>
+        </a>
+
+        <div class="nav-menu" id="navMenu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="elections.html" class="nav-link">Elections</a>
+          <a href="candidates.html" class="nav-link">Candidates</a>
+          <a href="states.html" class="nav-link active">States & FCT</a>
+          <a href="ballot.html" class="nav-link">Practice Ballot</a>
+          <a href="results.html" class="nav-link">Results Dashboard</a>
+          <a href="about.html" class="nav-link">Voter Education</a>
+          <a href="admin.html" class="nav-link" style="color: #c2902d; font-weight: 800;">🛡️ Admin Portal</a>
+          <a href="ballot.html" class="nav-pill-btn">
+            <span>Simulate Vote</span>
+            <span>🗳️</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          ☰
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section-wrapper">
+      <div class="container">
+        <div class="section-head-block">
+          <span class="section-tag">36 Federating Units & FCT</span>
+          <h2 class="section-heading-h2">States & FCT Electoral Directory</h2>
+          <p class="section-subtext">Comprehensive electoral breakdown covering all 36 Nigerian states and the Federal Capital Territory, including LGA counts, senatorial districts, and governorship schedules.</p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="portal-form-panel" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+          <span style="font-weight: 800; color: #111827;" id="statesCountDisplay">Covering 37 Electoral Jurisdictions</span>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; width: 100%; max-width: 500px;">
+            <input type="text" id="stateSearchInput" class="portal-input" placeholder="Search state name or capital..." style="flex: 1; min-width: 180px;">
+            <select id="stateZoneSelect" class="portal-select" style="flex: 1; min-width: 180px;">
+              <option value="all">All Geopolitical Zones</option>
+              <option value="North Central">North Central</option>
+              <option value="North East">North East</option>
+              <option value="North West">North West</option>
+              <option value="South East">South East</option>
+              <option value="South South">South South</option>
+              <option value="South West">South West</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- States Grid -->
+        <div class="states-grid" id="statesGridContainer"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- State Modal -->
+  <div class="modal-overlay" id="stateModal">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeStateModal()" aria-label="Close modal">✕</button>
+      <div class="modal-header-bar">
+        <h3 id="stateModalTitle" style="font-family: var(--font-heading); font-size: 1.45rem; font-weight: 900;">State Electoral Profile</h3>
+      </div>
+      <div id="stateModalBody" class="modal-content-body"></div>
+    </div>
+  </div>
+
+  <!-- Candidate Modal (if opened from state) -->
+  <div class="modal-overlay" id="candidateModal">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeCandidateModal()" aria-label="Close modal">✕</button>
+      <div id="candidateModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-independence-disclaimer">
+        <strong>DISCREET INDEPENDENCE NOTICE:</strong> CivicVote Nigeria is an independent, non-governmental civic technology research platform.
+      </div>
+      <div class="footer-bottom-bar">
+        <div>© 2026 CivicVote Nigeria. Built strictly with Vanilla HTML5, CSS3, and JavaScript.</div>
+        <div style="display: flex; gap: 1.25rem;">
+          <a href="about.html">Electoral Glossary</a>
+          <a href="admin.html">Admin Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

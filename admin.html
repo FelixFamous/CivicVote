@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrative Portal — CivicVote Nigeria Electoral Tech</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ======================================================================
+       ADMINISTRATIVE SIDEBAR NAVIGATION
+       ====================================================================== -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-sidebar-header">
+      <svg style="width: 34px; height: 34px;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="#0A4023" stroke="#C2902D" stroke-width="3"/>
+        <path d="M50 16L74 27V52C74 67.5 63.5 80.5 50 84C36.5 80.5 26 67.5 26 52V27L50 16Z" fill="#0E542F" stroke="#FFFFFF" stroke-width="2"/>
+      </svg>
+      <div>
+        <div class="admin-brand-title">CIVIC<span>VOTE</span></div>
+        <div style="font-size: 0.7rem; color: #94a3b8; letter-spacing: 0.5px;">Electoral Console</div>
+      </div>
+      <span class="admin-badge-pill" style="margin-left: auto;">ADMIN</span>
+    </div>
+
+    <nav class="admin-nav">
+      <span class="admin-nav-section-title">Operations Console</span>
+      <a class="admin-nav-link active" data-view="dashboard">
+        <span>📊</span> Dashboard Overview
+      </a>
+      <a class="admin-nav-link" data-view="candidates">
+        <span>👥</span> Candidate Registry
+      </a>
+      <a class="admin-nav-link" data-view="elections">
+        <span>🗳️</span> Election Cycles
+      </a>
+
+      <span class="admin-nav-section-title">Audit & Integrity</span>
+      <a class="admin-nav-link" data-view="collation">
+        <span>📈</span> Collation & Tally
+      </a>
+      <a class="admin-nav-link" data-view="logs">
+        <span>🛡️</span> Security & Logs
+      </a>
+      <a class="admin-nav-link" data-view="settings">
+        <span>⚙️</span> Portal Settings
+      </a>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <div class="admin-sidebar-user">
+        <div class="admin-user-avatar">AD</div>
+        <div class="admin-user-info">
+          <span class="admin-user-name">Chief Admin</span>
+          <span class="admin-user-role">Returning Officer</span>
+        </div>
+      </div>
+      <a href="index.html" title="Exit to Public Portal" style="color: #94a3b8; font-size: 1.1rem; text-decoration: none;">🚪</a>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       MAIN CONTENT CONTAINER
+       ====================================================================== -->
+  <div class="admin-main-wrap">
+    
+    <!-- Top Administrative Header -->
+    <header class="admin-topbar">
+      <div class="admin-topbar-left">
+        <button class="admin-sidebar-toggle" id="adminSidebarToggle" aria-label="Toggle Sidebar">☰</button>
+        <h1 class="admin-page-title" id="adminCurrentPageTitle">Dashboard Overview</h1>
+      </div>
+
+      <div class="admin-topbar-right">
+        <div class="admin-system-status-indicator">
+          <span class="status-live-dot"></span>
+          <span>BVAS Sync: Online</span>
+        </div>
+        <a href="index.html" class="admin-portal-link-btn">
+          <span>🌐</span>
+          <span>View Public Portal</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Administrative Views -->
+    <main class="admin-content">
+
+      <!-- ================================================================
+           VIEW 1: DASHBOARD OVERVIEW
+           ================================================================ -->
+      <section id="view-dashboard" class="admin-view-panel active">
+        <!-- Metrics -->
+        <div class="admin-metrics-grid">
+          <div class="admin-stat-card">
+            <div class="admin-stat-content">
+              <h4>Active Election Tiers</h4>
+              <div class="admin-stat-number">5</div>
+              <div class="admin-stat-subtext">● 1 National • 4 Subnational</div>
+            </div>
+            <div class="admin-stat-icon-wrap icon-bg-green">🏛️</div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="admin-stat-content">
+              <h4>Verified Candidates</h4>
+              <div class="admin-stat-number" id="adminMetricCandidates">18</div>
+              <div class="admin-stat-subtext">● Gazette Approved</div>
+            </div>
+            <div class="admin-stat-icon-wrap icon-bg-blue">👥</div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="admin-stat-content">
+              <h4>Practice Ballots Logged</h4>
+              <div class="admin-stat-number" id="adminMetricBallots">142</div>
+              <div class="admin-stat-subtext">● Ledger Verified</div>
+            </div>
+            <div class="admin-stat-icon-wrap icon-bg-gold">🗳️</div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="admin-stat-content">
+              <h4>System Health Index</h4>
+              <div class="admin-stat-number">99.9%</div>
+              <div class="admin-stat-subtext">● Zero Critical Errors</div>
+            </div>
+            <div class="admin-stat-icon-wrap icon-bg-green">🛡️</div>
+          </div>
+        </div>
+
+        <!-- Two Column Executive Panel -->
+        <div class="results-two-col-grid" style="margin-bottom: 2rem;">
+          <!-- Quick Operations -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title">Electoral Operation Shortcuts</h3>
+            </div>
+            <div class="admin-card-body" style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.85rem; background: #f8fafc; border: 1px solid var(--admin-border); border-radius: 6px;">
+                <div>
+                  <strong>Candidate Verification Screening</strong>
+                  <p style="font-size: 0.82rem; color: #6b7280;">Audit pending political candidates contesting upcoming cycles.</p>
+                </div>
+                <button class="btn-admin-primary btn-admin-sm" onclick="document.querySelector('[data-view=\'candidates\']').click()">Open Registry →</button>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.85rem; background: #f8fafc; border: 1px solid var(--admin-border); border-radius: 6px;">
+                <div>
+                  <strong>Ballot Accreditation Protocol</strong>
+                  <p style="font-size: 0.82rem; color: #6b7280;">Test biometric simulator tokens and voter card accreditation queues.</p>
+                </div>
+                <button class="btn-admin-secondary btn-admin-sm" onclick="showAdminToast('BVAS diagnostic pulse sent: 100% operational.')">Test BVAS</button>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.85rem; background: #f8fafc; border: 1px solid var(--admin-border); border-radius: 6px;">
+                <div>
+                  <strong>Live Collation & Seal Certificate</strong>
+                  <p style="font-size: 0.82rem; color: #6b7280;">Issue official verification certificates for electronic practice returns.</p>
+                </div>
+                <button class="btn-admin-secondary btn-admin-sm" onclick="document.querySelector('[data-view=\'collation\']').click()">Collation Desk →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Integrity Alerts -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3 class="admin-card-title">Integrity & Audit Notifications</h3>
+              <span class="admin-badge-pill" style="background: #eefbf3; color: #0a4023;">LIVE FEED</span>
+            </div>
+            <div class="admin-card-body">
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.88rem;">
+                <li style="padding-bottom: 0.65rem; border-bottom: 1px solid var(--admin-border);">
+                  <div style="font-weight: 700; color: #111827;">🟢 36 States + FCT Database Active</div>
+                  <div style="font-size: 0.78rem; color: #6b7280;">All 37 administrative jurisdictions validated against verified INEC figures.</div>
+                </li>
+                <li style="padding-bottom: 0.65rem; border-bottom: 1px solid var(--admin-border);">
+                  <div style="font-weight: 700; color: #111827;">🟢 8 Off-Cycle States Staggered</div>
+                  <div style="font-size: 0.78rem; color: #6b7280;">Anambra, Bayelsa, Edo, Ekiti, Imo, Kogi, Ondo, Osun calendars isolated.</div>
+                </li>
+                <li>
+                  <div style="font-weight: 700; color: #111827;">🟢 Cryptographic Ledger Ready</div>
+                  <div style="font-size: 0.78rem; color: #6b7280;">SHA-256 practice ballot receipt slips actively being generated.</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 2: CANDIDATE REGISTRY
+           ================================================================ -->
+      <section id="view-candidates" class="admin-view-panel">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h3 class="admin-card-title">Accredited Political Candidates</h3>
+              <p style="font-size: 0.85rem; color: #6b7280;">Screen, approve, register, or review candidates contesting across Nigeria.</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <span class="admin-badge-pill" id="adminCandidateCountBadge" style="padding: 0.4rem 0.75rem;">Loading...</span>
+              <button class="btn-admin-primary" id="openAddCandidateModalBtn">
+                <span>➕</span> Register New Candidate
+              </button>
+            </div>
+          </div>
+
+          <div style="padding: 1.25rem 1.75rem; background: #f8fafc; border-bottom: 1px solid var(--admin-border); display: flex; gap: 1rem; flex-wrap: wrap;">
+            <input type="text" id="adminCandidateSearch" class="admin-input" placeholder="Search candidate name or state..." style="max-width: 280px;">
+            <select id="adminCandidatePartyFilter" class="admin-select" style="max-width: 200px;">
+              <option value="all">All Political Parties</option>
+              <option value="APC">APC</option>
+              <option value="PDP">PDP</option>
+              <option value="LP">LP</option>
+              <option value="NNPP">NNPP</option>
+              <option value="APGA">APGA</option>
+            </select>
+            <select id="adminCandidatePositionFilter" class="admin-select" style="max-width: 200px;">
+              <option value="all">All Contested Positions</option>
+              <option value="President">President</option>
+              <option value="Governor">Governor</option>
+              <option value="Senator">Senator</option>
+            </select>
+          </div>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Candidate & Running Mate</th>
+                  <th>Party</th>
+                  <th>Position</th>
+                  <th>State / Jurisdiction</th>
+                  <th>Gazette Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminCandidatesTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 3: ELECTION CYCLES
+           ================================================================ -->
+      <section id="view-elections" class="admin-view-panel">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h3 class="admin-card-title">Electoral Tier Configurations & Schedules</h3>
+              <p style="font-size: 0.85rem; color: #6b7280;">Manage active status, voter thresholds, and schedules for Nigeria's 5 representative elections.</p>
+            </div>
+          </div>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Electoral Office</th>
+                  <th>Constituency Scope</th>
+                  <th>Statutory Cycle</th>
+                  <th>Current Status</th>
+                  <th>Accreditation Mode</th>
+                  <th>Administrative Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Presidential Election</strong></td>
+                  <td>Federal Republic of Nigeria (Nationwide)</td>
+                  <td>Every 4 Years (Next: Feb 2027)</td>
+                  <td class="election-status-indicator">
+                    <span style="background: #eefbf3; color: #0a4023; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px;">🟢 Active / Open</span>
+                  </td>
+                  <td>BVAS Biometric + PVC</td>
+                  <td>
+                    <button class="btn-admin-secondary btn-admin-sm btn-toggle-election-status">Suspend Cycle</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Governorship (Standard 28 States)</strong></td>
+                  <td>28 State Jurisdictions</td>
+                  <td>Every 4 Years (Next: March 2027)</td>
+                  <td class="election-status-indicator">
+                    <span style="background: #eefbf3; color: #0a4023; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px;">🟢 Active / Open</span>
+                  </td>
+                  <td>BVAS Biometric + PVC</td>
+                  <td>
+                    <button class="btn-admin-secondary btn-admin-sm btn-toggle-election-status">Suspend Cycle</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Governorship (8 Off-Cycle States)</strong></td>
+                  <td>Anambra, Bayelsa, Edo, Ekiti, Imo, Kogi, Ondo, Osun</td>
+                  <td>Staggered Judicial Schedules</td>
+                  <td class="election-status-indicator">
+                    <span style="background: #fef8eb; color: #8a6114; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px;">⏳ Staggered Calendar</span>
+                  </td>
+                  <td>BVAS Biometric + PVC</td>
+                  <td>
+                    <button class="btn-admin-secondary btn-admin-sm btn-toggle-election-status">Configure Dates</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Senatorial Elections (109 Seats)</strong></td>
+                  <td>109 Senatorial Districts across 36 States & FCT</td>
+                  <td>Every 4 Years (Next: Feb 2027)</td>
+                  <td class="election-status-indicator">
+                    <span style="background: #eefbf3; color: #0a4023; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px;">🟢 Active / Open</span>
+                  </td>
+                  <td>BVAS Biometric + PVC</td>
+                  <td>
+                    <button class="btn-admin-secondary btn-admin-sm btn-toggle-election-status">Suspend Cycle</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>House of Representatives (360 Seats)</strong></td>
+                  <td>360 Federal Constituencies</td>
+                  <td>Every 4 Years (Next: Feb 2027)</td>
+                  <td class="election-status-indicator">
+                    <span style="background: #eefbf3; color: #0a4023; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px;">🟢 Active / Open</span>
+                  </td>
+                  <td>BVAS Biometric + PVC</td>
+                  <td>
+                    <button class="btn-admin-secondary btn-admin-sm btn-toggle-election-status">Suspend Cycle</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 4: COLLATION & TABULATION AUDIT
+           ================================================================ -->
+      <section id="view-collation" class="admin-view-panel">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h3 class="admin-card-title">Live Practice Collation & Tabulation Console</h3>
+              <p style="font-size: 0.85rem; color: #6b7280;">Supervise live electronic practice ballots cast by citizens during the current research session.</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button class="btn-admin-secondary" id="adminPurgeSessionVotesBtn">Reset Ledger</button>
+              <button class="btn-admin-primary" id="adminCertifyReturnsBtn">Certify Election Returns 📜</button>
+            </div>
+          </div>
+
+          <div class="admin-card-body">
+            <div style="background: #f8fafc; border: 1px solid var(--admin-border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Statutory Collation Hierarchy Notice</h4>
+              <p style="font-size: 0.92rem; color: #4b5563; line-height: 1.6;">
+                In compliance with the Electoral Act 2022, electronic tallies serve as transparent citizen observation channels. Official legal declarations require sequential collation: Polling Unit Form EC8A &rarr; Ward EC8B &rarr; LGA EC8C &rarr; State EC8D &rarr; National EC8E.
+              </p>
+            </div>
+
+            <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 1rem;">Historical Baseline Reference (2023 Presidential Tally)</h4>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Candidate</th>
+                    <th>Party</th>
+                    <th>Official Certified Votes</th>
+                    <th>Percentage</th>
+                    <th>States Won</th>
+                    <th>Verification Seal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Bola Ahmed Tinubu</strong></td>
+                    <td><span style="background: #007A3D; color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px;">APC</span></td>
+                    <td>8,794,726</td>
+                    <td>36.61%</td>
+                    <td>12 States</td>
+                    <td><span style="color: #0a4023; font-weight: 800;">✓ Gazetted Winner</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Atiku Abubakar</strong></td>
+                    <td><span style="background: #C8102E; color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px;">PDP</span></td>
+                    <td>6,984,520</td>
+                    <td>29.07%</td>
+                    <td>12 States</td>
+                    <td><span style="color: #6b7280; font-weight: 700;">First Runner-Up</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Peter Gregory Obi</strong></td>
+                    <td><span style="background: #F7931E; color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px;">LP</span></td>
+                    <td>6,101,533</td>
+                    <td>25.40%</td>
+                    <td>12 States</td>
+                    <td><span style="color: #6b7280; font-weight: 700;">Second Runner-Up</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Rabiu Musa Kwankwaso</strong></td>
+                    <td><span style="background: #1B365D; color: #fff; font-size: 0.75rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px;">NNPP</span></td>
+                    <td>1,496,687</td>
+                    <td>6.23%</td>
+                    <td>1 State</td>
+                    <td><span style="color: #6b7280; font-weight: 700;">Third Runner-Up</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 5: SECURITY & AUDIT INCIDENT LOGS
+           ================================================================ -->
+      <section id="view-logs" class="admin-view-panel">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <h3 class="admin-card-title">System Event & Audit Trail</h3>
+              <p style="font-size: 0.85rem; color: #6b7280;">Real-time tamper-evident log of administrative commands and simulation events.</p>
+            </div>
+            <button class="btn-admin-secondary" id="adminClearLogsBtn">Clear Local Logs</button>
+          </div>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Electoral Event / Action</th>
+                  <th>Initiator</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="adminAuditLogsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           VIEW 6: SETTINGS
+           ================================================================ -->
+      <section id="view-settings" class="admin-view-panel">
+        <div class="admin-card" style="max-width: 800px;">
+          <div class="admin-card-header">
+            <h3 class="admin-card-title">Electoral Technology System Preferences</h3>
+          </div>
+          <div class="admin-card-body">
+            <form onsubmit="event.preventDefault(); showAdminToast('Administrative configuration saved successfully.');">
+              <div class="admin-form-group">
+                <label class="admin-form-label">Simulation Environment Mode</label>
+                <select class="admin-select">
+                  <option selected>Academic Project Defense & Research Mode</option>
+                  <option>Public Voter Literacy Simulation</option>
+                  <option>Electoral Officer Training Sandbox</option>
+                </select>
+              </div>
+
+              <div class="admin-form-row-2">
+                <div class="admin-form-group">
+                  <label class="admin-form-label">BVAS Mock Verification Threshold</label>
+                  <input type="text" class="admin-input" value="98.5% Confidence" readonly>
+                </div>
+                <div class="admin-form-group">
+                  <label class="admin-form-label">Cryptographic Hash Standard</label>
+                  <input type="text" class="admin-input" value="SHA-256 (Client-side)" readonly>
+                </div>
+              </div>
+
+              <div class="admin-form-group">
+                <label class="admin-form-label">Independence Compliance Statement</label>
+                <textarea class="admin-textarea" rows="3" readonly>CivicVote Nigeria is strictly independent civic technology designed for voter education and academic research. Non-partisan and not representing INEC.</textarea>
+              </div>
+
+              <button type="submit" class="btn-admin-primary">Save Administrative Parameters</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ======================================================================
+       MODAL: REGISTER NEW CANDIDATE
+       ====================================================================== -->
+  <div class="admin-modal-overlay" id="addCandidateModal">
+    <div class="admin-modal-window">
+      <div class="admin-modal-header">
+        <h3 style="font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.25rem; font-weight: 800;">Register Candidate into Gazette Ledger</h3>
+        <button class="admin-modal-close" id="closeAddCandidateModalBtn">✕</button>
+      </div>
+      <div class="admin-modal-body">
+        <form id="addCandidateForm">
+          <div class="admin-form-row-2">
+            <div class="admin-form-group">
+              <label class="admin-form-label">Candidate Full Name *</label>
+              <input type="text" id="newCandName" class="admin-input" placeholder="e.g. Sen. Natasha Akpoti-Uduaghan" required>
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-form-label">Political Party *</label>
+              <select id="newCandParty" class="admin-select" required>
+                <option value="APC">All Progressives Congress (APC)</option>
+                <option value="PDP">Peoples Democratic Party (PDP)</option>
+                <option value="LP">Labour Party (LP)</option>
+                <option value="NNPP">New Nigeria Peoples Party (NNPP)</option>
+                <option value="APGA">All Progressives Grand Alliance (APGA)</option>
+                <option value="SDP">Social Democratic Party (SDP)</option>
+                <option value="ADC">African Democratic Congress (ADC)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-form-row-2">
+            <div class="admin-form-group">
+              <label class="admin-form-label">Position Contested *</label>
+              <select id="newCandPosition" class="admin-select" required>
+                <option value="President">President</option>
+                <option value="Governor" selected>Governor</option>
+                <option value="Senator">Senator</option>
+              </select>
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-form-label">State / Jurisdiction *</label>
+              <select id="newCandState" class="admin-select" required>
+                <option value="Kogi">Kogi</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Kano">Kano</option>
+                <option value="Rivers">Rivers</option>
+                <option value="Anambra">Anambra</option>
+                <option value="Abia">Abia</option>
+                <option value="Borno">Borno</option>
+                <option value="Edo">Edo</option>
+                <option value="Federal Capital Territory">Federal Capital Territory</option>
+                <option value="Ogun">Ogun</option>
+                <option value="Osun">Osun</option>
+                <option value="Oyo">Oyo</option>
+                <option value="Kaduna">Kaduna</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-form-row-2">
+            <div class="admin-form-group">
+              <label class="admin-form-label">Running Mate (if Executive Office)</label>
+              <input type="text" id="newCandRunningMate" class="admin-input" placeholder="e.g. Arc. Salmanu Idakwo">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-form-label">Portrait Photo URL</label>
+              <input type="url" id="newCandPhoto" class="admin-input" placeholder="https://... direct image URL">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-form-label">Policy Manifesto Summary</label>
+            <textarea id="newCandManifesto" class="admin-textarea" rows="3" placeholder="Key policy priorities and development blueprint..."></textarea>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+            <button type="button" class="btn-admin-secondary" onclick="document.getElementById('addCandidateModal').classList.remove('open')">Cancel</button>
+            <button type="submit" class="btn-admin-primary">Complete Accreditation & Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="admin-toast" id="adminToast">
+    <span>🛡️</span>
+    <span id="adminToastMsg">Administrative update synchronized.</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
