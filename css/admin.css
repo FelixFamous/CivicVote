@@ -253,6 +253,16 @@ body.admin-body {
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 700;
+  white-space: nowrap !important;
+  flex-shrink: 0;
+}
+
+.bvas-text-short {
+  display: none;
+}
+
+.bvas-text-full {
+  display: inline;
 }
 
 .status-live-dot {
@@ -1087,6 +1097,47 @@ body.admin-body {
   }
 }
 
+@media (max-width: 768px) {
+  .admin-topbar {
+    padding: 0 1rem;
+    height: 58px;
+  }
+  .admin-topbar-left {
+    gap: 0.65rem;
+    min-width: 0;
+  }
+  .admin-sidebar-toggle {
+    padding: 0.35rem 0.55rem;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+  .admin-page-title {
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 170px;
+    line-height: 1.2;
+  }
+  .admin-topbar-right {
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .admin-token-pill {
+    display: none !important; /* Hide verbose token in header on mobile to prevent squishing */
+  }
+  .bvas-text-full {
+    display: none !important;
+  }
+  .bvas-text-short {
+    display: inline !important;
+  }
+  .admin-bvas-pill {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
 @media (max-width: 640px) {
   .admin-metrics-grid {
     grid-template-columns: 1fr;
@@ -1099,11 +1150,35 @@ body.admin-body {
   .admin-form-row-2 {
     grid-template-columns: 1fr;
   }
-  .admin-topbar-right .admin-portal-link-btn span:last-child {
-    display: none; /* Icon only on small mobile */
+}
+
+@media (max-width: 480px) {
+  .admin-topbar {
+    padding: 0 0.85rem;
+    height: 54px;
   }
   .admin-page-title {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
+    max-width: 135px;
+  }
+  .admin-bvas-pill {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.72rem;
+    gap: 0.35rem;
+  }
+  .quick-action-strip {
+    gap: 0.5rem;
+  }
+  .quick-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .admin-page-title {
+    max-width: 110px;
+    font-size: 0.88rem;
   }
 }
 
