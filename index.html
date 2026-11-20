@@ -273,36 +273,36 @@
             </p>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
-            <div style="background: #ffffff; border: 1px solid var(--gov-border); border-radius: 8px; padding: 1.75rem 1.25rem; text-align: center;">
+          <div class="categories-overview-grid">
+            <div class="category-summary-card">
               <div style="font-size: 2rem; margin-bottom: 0.75rem;">🏛️</div>
               <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 0.35rem;">Presidential</h3>
               <p style="font-size: 0.88rem; color: #4b5563; margin-bottom: 1.25rem;">Single nationwide constituency covering all 36 States & FCT.</p>
               <a href="#elections" class="btn-official-outline" style="padding: 0.4rem 0.85rem; font-size: 0.82rem;" data-navigate="elections">Learn Details →</a>
             </div>
 
-            <div style="background: #ffffff; border: 1px solid var(--gov-border); border-radius: 8px; padding: 1.75rem 1.25rem; text-align: center;">
+            <div class="category-summary-card">
               <div style="font-size: 2rem; margin-bottom: 0.75rem;">🏢</div>
               <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 0.35rem;">Governorship</h3>
               <p style="font-size: 0.88rem; color: #4b5563; margin-bottom: 1.25rem;">36 State Chief Executives (28 standard + 8 off-cycle states).</p>
               <a href="#elections" class="btn-official-outline" style="padding: 0.4rem 0.85rem; font-size: 0.82rem;" data-navigate="elections">View Schedules →</a>
             </div>
 
-            <div style="background: #ffffff; border: 1px solid var(--gov-border); border-radius: 8px; padding: 1.75rem 1.25rem; text-align: center;">
+            <div class="category-summary-card">
               <div style="font-size: 2rem; margin-bottom: 0.75rem;">⚖️</div>
               <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 0.35rem;">Senatorial</h3>
               <p style="font-size: 0.88rem; color: #4b5563; margin-bottom: 1.25rem;">109 Senators representing Nigeria's Upper Legislative Chamber.</p>
               <a href="#candidates" class="btn-official-outline" style="padding: 0.4rem 0.85rem; font-size: 0.82rem;" onclick="resetCandidateFilters(); document.getElementById('candidatePositionFilter').value='Senator'; renderCandidates({position:'Senator'}); navigateToPage('candidates');">View Senators →</a>
             </div>
 
-            <div style="background: #ffffff; border: 1px solid var(--gov-border); border-radius: 8px; padding: 1.75rem 1.25rem; text-align: center;">
+            <div class="category-summary-card">
               <div style="font-size: 2rem; margin-bottom: 0.75rem;">📜</div>
               <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 0.35rem;">House of Reps</h3>
               <p style="font-size: 0.88rem; color: #4b5563; margin-bottom: 1.25rem;">360 Federal Constituencies in the Green Chamber.</p>
               <a href="#elections" class="btn-official-outline" style="padding: 0.4rem 0.85rem; font-size: 0.82rem;" data-navigate="elections">Constituencies →</a>
             </div>
 
-            <div style="background: #ffffff; border: 1px solid var(--gov-border); border-radius: 8px; padding: 1.75rem 1.25rem; text-align: center;">
+            <div class="category-summary-card">
               <div style="font-size: 2rem; margin-bottom: 0.75rem;">🗳️</div>
               <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 0.35rem;">State Assembly</h3>
               <p style="font-size: 0.88rem; color: #4b5563; margin-bottom: 1.25rem;">993 State Constituencies across all 36 state legislatures.</p>
@@ -540,7 +540,7 @@
                   <div class="step-num-badge">1</div>
                   <h4 class="step-title-text">Select Election Category & Jurisdiction</h4>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+                <div class="ballot-step1-grid">
                   <div class="portal-form-group">
                     <label class="portal-label">Election Category</label>
                     <select id="ballotElectionSelect" class="portal-select">
@@ -606,14 +606,14 @@
           <div class="results-summary-cards" id="resultsSummaryRow"></div>
 
           <!-- Two Column Results Grid -->
-          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.75rem;">
+          <div class="results-two-col-grid">
             <!-- Left: Official Returns -->
             <div style="background: #ffffff; border: 1px solid var(--gov-border); border-radius: 8px; padding: 1.75rem;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
                 <h4 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 900;">State-by-State Leading Returns</h4>
                 <select id="resultsStateSelect" class="portal-select" style="width: auto; padding: 0.35rem 0.65rem;"></select>
               </div>
-              <div style="overflow-x: auto;">
+              <div class="table-responsive">
                 <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
                   <thead>
                     <tr style="background: #f8fafc; border-bottom: 2px solid var(--gov-border);">
@@ -656,7 +656,7 @@
           </div>
 
           <!-- 3 Pillars -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+          <div class="pillars-three-grid">
             <div style="background: #ffffff; border: 1px solid var(--gov-border); border-radius: 8px; padding: 2rem;">
               <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">📲</div>
               <h3 style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 900; margin-bottom: 0.5rem;">BVAS Authentication</h3>
@@ -711,7 +711,7 @@
             </div>
 
             <form id="civicContactForm">
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="contact-inputs-grid">
                 <div class="portal-form-group">
                   <label class="portal-label">Your Name <span class="req">*</span></label>
                   <input type="text" id="contactName" class="portal-input" placeholder="e.g. Adebayo Okonjo" required>
@@ -760,20 +760,20 @@
   <div class="modal-overlay" id="stateModal">
     <div class="modal-window">
       <button class="modal-close-btn" onclick="closeStateModal()">✕</button>
-      <div style="background: var(--gov-green-900); color: #fff; padding: 1.75rem 2rem;">
+      <div class="modal-header-bar">
         <h3 id="stateModalTitle" style="font-family: var(--font-heading); font-size: 1.45rem; font-weight: 900;">State Electoral Profile</h3>
       </div>
-      <div id="stateModalBody" style="padding: 2rem;"></div>
+      <div id="stateModalBody" class="modal-content-body"></div>
     </div>
   </div>
 
   <!-- Ballot Review Modal -->
   <div class="modal-overlay" id="ballotReviewModal">
     <div class="modal-window" style="max-width: 600px;">
-      <div style="background: var(--gov-green-900); color: #fff; padding: 1.5rem 2rem;">
+      <div class="modal-header-bar">
         <h3 style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 900;">Review Electronic Ballot</h3>
       </div>
-      <div style="padding: 2rem;">
+      <div class="modal-content-body">
         <div id="ballotReviewDetails"></div>
         <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.25rem;">
           <button type="button" class="btn-official-outline" id="cancelReviewVoteBtn">Make Changes</button>
