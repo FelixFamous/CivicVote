@@ -273,12 +273,12 @@ function initAdminElections() {
             const row = this.closest("tr");
             const statusCell = row.querySelector(".election-status-indicator");
             if (statusCell.textContent.includes("Active")) {
-                statusCell.innerHTML = `<span style="background: #fef8eb; color: #8a6114; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px;">⏸️ Suspended</span>`;
+                statusCell.innerHTML = `<span class="status-pill-suspended">⏸️ Suspended</span>`;
                 this.textContent = "Resume Cycle";
                 logAdminAction("Electoral cycle temporarily suspended", "Chief Returning Officer", "Warning");
                 showAdminToast("Election cycle suspended.");
             } else {
-                statusCell.innerHTML = `<span style="background: #eefbf3; color: #0a4023; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px;">🟢 Active / Open</span>`;
+                statusCell.innerHTML = `<span class="status-pill-active">🟢 Active / Open</span>`;
                 this.textContent = "Suspend Cycle";
                 logAdminAction("Electoral cycle activated and synchronized", "Chief Returning Officer");
                 showAdminToast("Election cycle is now Active.");

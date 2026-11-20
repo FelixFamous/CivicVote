@@ -519,11 +519,12 @@ body.admin-body {
   border: 1px solid #bbf7d0;
   font-weight: 800;
   font-size: 0.74rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: 4px;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
+  white-space: nowrap;
 }
 
 .status-badge-pending {
@@ -532,11 +533,62 @@ body.admin-body {
   border: 1px solid #fde047;
   font-weight: 800;
   font-size: 0.74rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: 4px;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.status-pill-active {
+  background: #eefbf3;
+  color: #0a4023;
+  border: 1px solid #bbf7d0;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+.status-pill-staggered {
+  background: #fef8eb;
+  color: #8a6114;
+  border: 1px solid #fde047;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+.status-pill-suspended {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+.election-status-indicator {
+  white-space: nowrap !important;
+  min-width: 140px;
 }
 
 /* Modals */

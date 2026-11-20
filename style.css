@@ -552,9 +552,10 @@ a {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--gov-green-700);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  white-space: nowrap;
 }
 
 /* Filter controls matching cvr.inecnigeria.org portal form style */
